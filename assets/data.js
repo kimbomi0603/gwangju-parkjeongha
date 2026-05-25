@@ -21,11 +21,28 @@ const CAND = {
   sns: {
     tiktok: "https://www.tiktok.com/@didvkwls0915",
     instagram: "https://www.instagram.com/jungha5007",
-    facebook: "",
-    youtube: "",
+    facebook: "https://www.facebook.com/bagjeongha.285165",
+    youtube: "https://www.youtube.com/channel/UC0f3wLPPsEdCdIdUkNgemvg",
     blog: ""
   }
 };
+
+/* ===== 현장 속으로 — 현장 활동 사진 =====
+   사진을 assets/img/ 에 field-01.jpg, field-02.jpg … 순서로 넣으면
+   홈과 '활동·공보' 페이지의 '현장 속으로' 슬라이드가 자동으로 표시됩니다.
+   cap(설명)은 자유롭게 수정하세요. 빈 값으로 두면 설명 없이 사진만 나옵니다. */
+const FIELD = [
+  { src:"assets/img/field-01.jpg", cap:"국립5·18민주묘지 참배" },
+  { src:"assets/img/field-02.jpg", cap:"5·18 민주평화대행진, 시민과 함께" },
+  { src:"assets/img/field-03.jpg", cap:"5·18 기념행사 — 오월의 꽃, 오늘의 빛" },
+  { src:"assets/img/field-04.jpg", cap:"문흥제일교회 인사 — 신수정 북구청장 후보와 함께" },
+  { src:"assets/img/field-05.jpg", cap:"광주 북구청 앞, 함께 뛰는 더불어민주당" },
+  { src:"assets/img/field-06.jpg", cap:"민주당 전남광주·전북 공천자대회" },
+  { src:"assets/img/field-07.jpg", cap:"거리유세 — 발로 뛰는 일꾼 박정하" },
+  { src:"assets/img/field-08.jpg", cap:"주민과 함께한 선거운동 현장" },
+  { src:"assets/img/field-09.jpg", cap:"주민 한 분 한 분, 손을 잡고" },
+  { src:"assets/img/field-10.jpg", cap:"거리에서 만난 주민들" }
+];
 
 /* 광주 북구 2026년도 본예산 (출처: 광주 북구 / 더팩트 2025.12.22 보도, 지방재정365)
    단위: 억원 */
@@ -122,20 +139,22 @@ const DEMO = {
   ]
 };
 
-/* ===== 지방재정365 OpenAPI 연동 설정 =====
-   기본값(enabled:false)에서는 위 BUDGET 의 '2026 본예산 확정치'(지방재정365 공시 기준)를
-   그대로 시각화합니다. 실시간 연동을 원하면:
-     1) 공공데이터포털(data.go.kr)에서 '행정안전부 지방재정365' 활용신청 → 인증키 발급
-     2) 아래 serviceKey 에 붙여넣고 enabled:true 로 변경
-     3) 브라우저 CORS 차단 시 proxy 에 프록시 URL(prefix)을 지정
-   참고 문서: https://www.data.go.kr/data/15138709/openapi.do */
+/* ===== 지방재정365 OpenAPI 실시간 연동 설정 =====
+   지방재정365 세출예산 OpenAPI(엔드포인트 ACEXBG)를 호출해 광주 북구의 최신
+   세출예산(일반·특별회계)을 실시간으로 갱신합니다.
+   인증키는 공개 노출되면 안 되므로, Cloudflare Worker(프록시)에 보관합니다.
+     1) Cloudflare Worker 를 배포(cloudflare-worker.js + 안내문 참고)하고
+        LOFIN_KEY(인증키)를 Secret 으로 설정
+     2) 배포된 Worker 주소를 아래 proxy 에 붙여넣기
+        예) "https://parkjeongha-budget.이름.workers.dev"
+   proxy 가 비어 있으면 위 BUDGET 의 확정 수치(지방재정365 기준)를 그대로 표시합니다. */
 const LOFIN = {
-  enabled: false,
-  serviceKey: "",
+  enabled: true,
   proxy: "",
-  region: { sido: "광주광역시", sigungu: "북구" },
+  lafName: "광주북구",
+  lafCode: "2914000",
   year: 2026,
-  docs: "https://www.data.go.kr/data/15138709/openapi.do"
+  docs: "https://www.lofin365.go.kr/"
 };
 
 /* ===== 우리동네 구석구석 — 나선거구 동별 예산·현안 =====

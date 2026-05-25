@@ -94,6 +94,35 @@
   /* SNS 버튼 채우기 (헤더/히어로/푸터 등 data-sns 모든 영역) */
   document.querySelectorAll("[data-sns]").forEach(el=>{ el.innerHTML = snsHTML(); });
 
+  /* ---------- 현장 속으로 캐러셀 (data.js 의 FIELD 사용) ---------- */
+  (function(){
+    const mounts = document.querySelectorAll("[data-field-carousel]");
+    if(!mounts.length) return;
+    const list = (typeof FIELD !== "undefined" && Array.isArray(FIELD)) ? FIELD : [];
+    if(!list.length){ mounts.forEach(m=>{ const s=m.closest("section"); if(s) s.style.display="none"; }); return; }
+    const items = list.map(function(f){
+      const src = (typeof f === "string") ? f : f.src;
+      const cap = (typeof f === "object" && f.cap) ? f.cap : "";
+      const alt = cap || "박정하 현장 활동";
+      return '<a class="fc-item" href="' + src + '" data-lightbox>' +
+             '<img src="' + src + '" alt="' + alt + '" loading="lazy">' +
+             (cap ? '<span class="fc-cap">' + cap + '</span>' : '') + '</a>';
+    }).join("");
+    mounts.forEach(function(m){
+      m.innerHTML = '<div class="fc-viewport"><div class="fc-track">' + items + items + '</div></div>';
+      const imgs = m.querySelectorAll("img");
+      let ok = 0, done = 0;
+      function settle(){ if(done === imgs.length && ok === 0){ const s = m.closest("section"); if(s) s.style.display = "none"; } }
+      imgs.forEach(function(img){
+        if(img.complete && img.naturalWidth > 0){ ok++; done++; settle(); }
+        else{
+          img.addEventListener("load", function(){ ok++; done++; settle(); });
+          img.addEventListener("error", function(){ done++; const it = img.closest(".fc-item"); if(it) it.remove(); settle(); });
+        }
+      });
+    });
+  })();
+
   /* ---------- 라이트박스(갤러리) ---------- */
   if (document.querySelector("[data-lightbox]")){
     const lb = document.createElement("div");
