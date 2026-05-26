@@ -72,13 +72,14 @@
         <div>
           <h4>바로가기</h4>
           ${NAV.map(([k,label,href])=>`<a href="${href}">${label}</a>`).join("")}
+          <a href="index.html#donate">후원 안내</a>
         </div>
         <div>
           <h4>선거사무소</h4>
           <div class="foot-info">
             <b>전화</b> <a href="tel:${CAND.phoneRaw}" style="display:inline">${CAND.phone}</a><br>
             <b>이메일</b> <a href="mailto:${CAND.email}" style="display:inline">${CAND.email}</a><br>
-            <b>주소</b> ${CAND.office}
+            <b>주소</b> ${CAND.office}<br><b>후원계좌</b> 농협 351-1393-1904-13
           </div>
         </div>
       </div>
@@ -141,4 +142,20 @@
     lb.addEventListener("click",e=>{ if(e.target===lb||e.target.classList.contains("x")) close(); });
     document.addEventListener("keydown",e=>{ if(e.key==="Escape") close(); });
   }
+
+  /* ---------- 후원 계좌 복사 ---------- */
+  document.querySelectorAll("[data-copy]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var t = b.getAttribute("data-copy");
+      var old = b.textContent;
+      var done = function(){ b.textContent = "복사됨 ✓"; setTimeout(function(){ b.textContent = old; }, 1600); };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(t).then(done, function(){ done(); });
+      } else {
+        var ta = document.createElement("textarea"); ta.value = t; document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); } catch(e){}
+        document.body.removeChild(ta); done();
+      }
+    });
+  });
 })();
