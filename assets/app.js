@@ -5,7 +5,7 @@
   const page = document.body.dataset.page || "";
   const NAV = [
     ["index","홈","index.html"],
-    ["profile","후보 소개","profile.html"],
+    ["profile","당선인 소개","profile.html"],
     ["pledges","공약","pledges.html"],
     ["village","우리동네","village.html"],
     ["budget","예산 현황","budget.html"],
@@ -72,21 +72,20 @@
         <div>
           <h4>바로가기</h4>
           ${NAV.map(([k,label,href])=>`<a href="${href}">${label}</a>`).join("")}
-          <a href="index.html#donate">후원 안내</a>
         </div>
         <div>
-          <h4>선거사무소</h4>
+          <h4>당선인 사무실</h4>
           <div class="foot-info">
             <b>전화</b> <a href="tel:${CAND.phoneRaw}" style="display:inline">${CAND.phone}</a><br>
             <b>이메일</b> <a href="mailto:${CAND.email}" style="display:inline">${CAND.email}</a><br>
-            <b>주소</b> ${CAND.office}<br><b>후원계좌</b> 농협 351-1393-1904-13
+            <b>주소</b> ${CAND.office}
           </div>
         </div>
       </div>
       <div class="foot-bottom">
-        본 웹사이트는 ${CAND.party} ${CAND.number} ${CAND.name} (광주 북구의회의원 나선거구 후보)의 선거운동을 위한 홍보물입니다.
+        본 웹사이트는 ${CAND.party} ${CAND.name} (광주 북구의회의원 나선거구 당선인)의 의정활동·주민소통 안내 페이지입니다.
         예산·집행 데이터는 광주 북구 공개자료 및 지방재정365 등 공공 출처를 기반으로 하며, 최신·정확한 수치는 각 공식 시스템에서 확인하실 수 있습니다.<br>
-        © 2026 ${CAND.name}. 제작·게재 책임 : ${CAND.name} 선거사무소.
+        © 2026 ${CAND.name}. 제작·게재 책임 : ${CAND.name} 당선인 사무실.
       </div>
     </div>`;
   const footMount = document.getElementById("site-footer");
