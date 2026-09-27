@@ -4,13 +4,13 @@
 (function(){
   const page = document.body.dataset.page || "";
   const NAV = [
-    ["index","홈","index.html"],
-    ["profile","당선인 소개","profile.html"],
-    ["pledges","공약","pledges.html"],
+    ["index","의정보고서","index.html"],
+    ["profile","의원 소개","profile.html"],
+    ["activity","의정활동","activity.html"],
+    ["pledges","약속 점검","pledges.html"],
     ["village","우리동네","village.html"],
-    ["budget","예산 현황","budget.html"],
-    ["execution","집행 내역","execution.html"],
-    ["gallery","활동·공보","gallery.html"],
+    ["budget","예산 감시","budget.html"],
+    ["gallery","사진·자료","gallery.html"],
     ["propose","민원·제안","propose.html"]
   ];
 
@@ -40,11 +40,11 @@
       <a class="brand" href="index.html" aria-label="박정하 홈">
         <span class="num">${CAND.number}</span>
         <span><span class="bname">${CAND.name}</span>
-        <span class="bsub">광주 북구의회 · 나선거구</span></span>
+        <span class="bsub">광주 북구의회의원 · 나선거구</span></span>
       </a>
       <button class="nav-toggle" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
       <nav class="nav-menu">
-        ${NAV.map(([k,label,href])=>`<a href="${href}" class="${k===page?'active':''}">${label}</a>`).join("")}
+        ${NAV.map(([k,label,href])=>`<a href="${href}" class="${(k===page||(k==='budget'&&page==='execution'))?'active':''}">${label}</a>`).join("")}
         <a href="propose.html" class="nav-cta">제안하기</a>
       </nav>
     </div>`;
@@ -74,7 +74,7 @@
           ${NAV.map(([k,label,href])=>`<a href="${href}">${label}</a>`).join("")}
         </div>
         <div>
-          <h4>당선인 사무실</h4>
+          <h4>의원 사무실</h4>
           <div class="foot-info">
             <b>전화</b> <a href="tel:${CAND.phoneRaw}" style="display:inline">${CAND.phone}</a><br>
             <b>이메일</b> <a href="mailto:${CAND.email}" style="display:inline">${CAND.email}</a><br>
@@ -83,9 +83,9 @@
         </div>
       </div>
       <div class="foot-bottom">
-        본 웹사이트는 ${CAND.party} ${CAND.name} (광주 북구의회의원 나선거구 당선인)의 의정활동·주민소통 안내 페이지입니다.
+        본 웹사이트는 ${CAND.party} ${CAND.name} (광주 북구의회의원 · 나선거구)의 의정활동·주민소통 안내 페이지입니다.
         예산·집행 데이터는 광주 북구 공개자료 및 지방재정365 등 공공 출처를 기반으로 하며, 최신·정확한 수치는 각 공식 시스템에서 확인하실 수 있습니다.<br>
-        © 2026 ${CAND.name}. 제작·게재 책임 : ${CAND.name} 당선인 사무실.
+        © 2026 ${CAND.name}. 제작·게재 책임 : ${CAND.name} 의원 사무실.
       </div>
     </div>`;
   const footMount = document.getElementById("site-footer");
@@ -121,6 +121,19 @@
         }
       });
     });
+  })();
+
+
+  /* ---------- 모바일 하단 빠른 실행 바 ---------- */
+  (function(){
+    const q = document.createElement("nav");
+    q.className = "quickbar";
+    q.setAttribute("aria-label","빠른 실행");
+    q.innerHTML =
+      '<a href="tel:' + CAND.phoneRaw + '"><span class="qi">📞</span>전화</a>' +
+      '<a href="activity.html"><span class="qi">📰</span>의정활동</a>' +
+      '<a class="primary" href="propose.html"><span class="qi">✉️</span>제안하기</a>';
+    document.body.append(q);
   })();
 
   /* ---------- 라이트박스(갤러리) ---------- */

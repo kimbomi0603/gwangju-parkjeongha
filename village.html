@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>우리동네 구석구석 | 동별 예산·약속 — 박정하 (광주 북구 나선거구)</title>
 <meta property="og:image" content="https://xn--hc0bu8zl5im0ac66b.kr/assets/img/og.jpg">
 <meta property="og:url" content="https://xn--hc0bu8zl5im0ac66b.kr/village.html">
@@ -18,7 +18,7 @@
   <div class="wrap center">
     <span class="section-tag">우리동네 구석구석</span>
     <h2 class="section-title">내 동네 예산과 약속, 동(洞)까지 확인하세요</h2>
-    <p class="section-desc">우리 동과 관련된 북구 예산 사업과 박정하의 동네 약속을 한곳에 모았습니다. 동별 세부 예산·집행은 공식 재정공시로 바로 연결됩니다.</p>
+    <p class="section-desc">우리 동과 관련된 북구 예산 사업과 박정하의 동네 약속 점검 현황을 한곳에 모았습니다. 동별 세부 예산·집행은 공식 재정공시로 바로 연결됩니다.</p>
   </div>
   <div class="wrap">
     <div class="pledge-tabs" id="tabs"></div>
@@ -61,8 +61,8 @@
       </div>
       <h3 ${vsub}>💰 우리 동 관련 북구 예산 사업 (2026 본예산)</h3>
       ${budgetHTML}
-      <h3 ${vsub}>📌 박정하의 동네 약속</h3>
-      ${p.groups.map(g=>`<div class="pledge-item"><h4><span class="badge">${g.tag}</span>${g.title}</h4><ul>${g.items.map(it=>`<li>${it}</li>`).join("")}</ul></div>`).join("")}
+      <h3 ${vsub}>📌 동네 약속 점검</h3>
+      ${p.groups.map(g=>`<div class="pledge-item"><h4><span class="badge">${g.tag}</span>${g.title}</h4><ul class="pledge-check">${g.items.map(it=>{const L=PLEDGE_LINKS[it];return L?`<li class="on"><i class="st st-on"></i><div><b>${it}</b><a class="pl-link" href="activity.html#t-${L.d}">${L.d.replace(/-/g,".")} · ${L.note} →</a></div></li>`:`<li><i class="st"></i><div>${it}<span class="pl-todo">임기 중 추진</span></div></li>`;}).join("")}</ul></div>`).join("")}
       <div class="notice mt-m"><span>ℹ️</span><div>${v.note}</div></div>
       <h3 ${vsub}>🔎 동별 예산·집행 자세히 보기</h3>
       <div class="source-links">${BUDGET.sources.slice(0,2).map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">🔗 ${t}</a>`).join("")}</div>
