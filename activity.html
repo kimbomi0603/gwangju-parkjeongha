@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>의정활동 | 박정하 · 광주 북구의회의원(나선거구)</title>
+<meta name="naver-site-verification" content="e6022b0de6278d960920169e5de74b9ad1e819b6" />
+<meta name="description" content="광주 북구의회 박정하 의원의 5분 자유발언, 연구회 활동, 의회 교류와 언론 보도를 한곳에 모았습니다. 북구 시 승격, 생활형 마을버스, 음식물쓰레기 감량.">
+<meta property="og:title" content="의정활동 | 박정하 · 광주 북구의회의원">
+<meta property="og:description" content="5분 자유발언·연구회·언론 보도까지, 박정하 의원의 의정활동 기록">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://xn--hc0bu8zl5im0ac66b.kr/assets/img/og.jpg">
+<meta property="og:url" content="https://xn--hc0bu8zl5im0ac66b.kr/activity.html">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body data-page="activity">
+<div id="site-header"></div>
+
+<!-- 페이지 머리 -->
+<section class="page-hero">
+  <div class="wrap">
+    <span class="section-tag on-dark">의정활동</span>
+    <h1>말보다 행동,<br><span class="hl">의정으로 증명합니다</span></h1>
+    <p>2026년 7월 광주 북구의회 제10대 의원으로 일을 시작했습니다. 본회의 발언, 연구회, 의회 교류, 그리고 이를 다룬 언론 보도를 모두 모았습니다.</p>
+    <div class="ph-stats" id="act-stats"></div>
+  </div>
+</section>
+
+<!-- 직책 -->
+<section class="tight">
+  <div class="wrap">
+    <div class="role-row" id="roles"></div>
+  </div>
+</section>
+
+<!-- 핵심 의정 -->
+<section class="tight">
+  <div class="wrap">
+    <span class="section-tag">핵심 의제</span>
+    <h2 class="section-title">본회의와 연구회에서 꺼낸 세 가지</h2>
+    <div class="agenda mt-m">
+      <article class="agenda-card">
+        <div class="ag-top"><span class="ag-no">01</span><span class="ag-when">2026.7.24 · 5분 자유발언</span></div>
+        <h3>북구 시 승격, 입법 과제로</h3>
+        <ul>
+          <li>42만 명 생활권에 맞는 권한과 재정</li>
+          <li>전담 TF·실무협의체, 특별법 개정안</li>
+          <li>도시계획 우선협의권 확보</li>
+        </ul>
+        <a class="ag-link" href="#t-2026-07-24">자세히 →</a>
+      </article>
+      <article class="agenda-card">
+        <div class="ag-top"><span class="ag-no">02</span><span class="ag-when">2026.8.24 · 5분 자유발언</span></div>
+        <h3>생활형 마을버스 도입</h3>
+        <ul>
+          <li>생활교통 취약지역 실태조사</li>
+          <li>주거지–시장·병원·환승거점 시범노선</li>
+          <li>지하철 2호선 개통과 연계</li>
+        </ul>
+        <a class="ag-link" href="#t-2026-08-24">자세히 →</a>
+      </article>
+      <article class="agenda-card">
+        <div class="ag-top"><span class="ag-no">03</span><span class="ag-when">2026.7~12 · 연구회 대표의원</span></div>
+        <h3>음식물쓰레기, 발생부터 줄이기</h3>
+        <ul>
+          <li>북구 반입량 광주 5개 구 중 최다</li>
+          <li>RFID 종량기 보급·분리배출 개선</li>
+          <li>12월 최종보고회에서 정책 제안</li>
+        </ul>
+        <a class="ag-link" href="#t-2026-08-10">자세히 →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 타임라인 -->
+<section class="bg-white" id="timeline">
+  <div class="wrap">
+    <span class="section-tag">활동 기록</span>
+    <h2 class="section-title">경선부터 오늘까지</h2>
+    <div class="filter-row" role="group" aria-label="분류 선택">
+      <button type="button" class="active" data-f="all">전체</button>
+      <button type="button" data-f="발언">본회의 발언</button>
+      <button type="button" data-f="의정">의정·교류</button>
+      <button type="button" data-f="선거">선거</button>
+    </div>
+    <ol class="timeline" id="tl"></ol>
+  </div>
+</section>
+
+<!-- 언론 보도 -->
+<section id="press">
+  <div class="wrap">
+    <div class="lead-row">
+      <div>
+        <span class="section-tag">언론 보도</span>
+        <h2 class="section-title">보도로 본 박정하</h2>
+      </div>
+      <span class="press-count" id="press-count"></span>
+    </div>
+    <ul class="press-list mt-m" id="press-list"></ul>
+    <p class="press-note">최신순입니다. 제목을 누르면 기사 원문으로 이동합니다.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="wrap">
+    <div class="cta-banner">
+      <h2>우리 동네 문제, <span class="hl">박정하</span>에게 알려주세요</h2>
+      <p>주민이 들려준 이야기가 다음 5분 발언이 됩니다.</p>
+      <div class="hero-cta" style="justify-content:center">
+        <a href="propose.html" class="btn btn-gold btn-lg">민원·정책 제안하기</a>
+        <a href="tel:01036175007" class="btn btn-ghost btn-lg btn-on-dark">📞 010-3617-5007</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+<script>
+(function(){
+  var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); };
+  var dot = function(d){ return d.replace(/-/g, "."); };
+  var CAT = { "발언":"본회의 발언", "의정":"의정·교류", "선거":"선거" };
+
+  /* 요약 숫자 */
+  var press = ACTIVITY.reduce(function(a,x){ return a.concat(x.p); }, []);
+  var speeches = ACTIVITY.filter(function(x){ return x.c === "발언"; }).length;
+  var outlets = {}; press.forEach(function(p){ outlets[p[1]] = 1; });
+  document.getElementById("act-stats").innerHTML =
+    '<div><b>' + speeches + '건</b><span>5분 자유발언</span></div>' +
+    '<div><b>2곳</b><span>상임위원회</span></div>' +
+    '<div><b>' + press.length + '건</b><span>언론 보도</span></div>' +
+    '<div><b>' + Object.keys(outlets).length + '곳</b><span>보도 매체</span></div>';
+
+  /* 직책 */
+  document.getElementById("roles").innerHTML = ROLES.map(function(r){
+    return '<div class="role"><span>' + esc(r[0]) + '</span><b>' + esc(r[1]) + '</b></div>';
+  }).join("");
+
+  /* 타임라인 */
+  function renderTL(f){
+    document.getElementById("tl").innerHTML = ACTIVITY.filter(function(x){ return f === "all" || x.c === f; }).map(function(x){
+      return '<li class="tl-item c-' + x.c + '" id="t-' + x.d + '">' +
+        '<div class="tl-date">' + dot(x.d) + '</div>' +
+        '<div class="tl-body">' +
+          '<span class="tl-cat">' + CAT[x.c] + '</span>' +
+          '<h3>' + esc(x.t) + '</h3>' +
+          '<p>' + esc(x.s) + '</p>' +
+          (x.q ? '<blockquote>“' + esc(x.q) + '”</blockquote>' : '') +
+          '<div class="tl-links">' + x.p.map(function(p){
+            return '<a href="' + p[3] + '" target="_blank" rel="noopener">' + esc(p[1]) + '</a>';
+          }).join("") + '</div>' +
+        '</div></li>';
+    }).join("");
+  }
+  var btns = document.querySelectorAll(".filter-row button");
+  btns.forEach(function(b){
+    b.addEventListener("click", function(){
+      btns.forEach(function(x){ x.classList.toggle("active", x === b); });
+      renderTL(b.dataset.f);
+    });
+  });
+  renderTL("all");
+
+  /* 핵심 의제 '자세히' → 필터 해제 후 이동 */
+  document.querySelectorAll(".ag-link").forEach(function(a){
+    a.addEventListener("click", function(){ btns[0].click(); });
+  });
+
+  /* 보도 목록 (최신순) */
+  press.sort(function(a,b){ return b[0].localeCompare(a[0]); });
+  document.getElementById("press-count").textContent = "총 " + press.length + "건";
+  document.getElementById("press-list").innerHTML = press.map(function(p){
+    return '<li><a href="' + p[3] + '" target="_blank" rel="noopener">' +
+      '<span class="pl-meta"><b>' + esc(p[1]) + '</b>' + dot(p[0]) + '</span>' +
+      '<span class="pl-title">' + esc(p[2]) + '</span></a></li>';
+  }).join("");
+})();
+</script>
+</body>
+</html>
