@@ -620,3 +620,9 @@ section.tight{padding:40px 0}
   .pledge-item h4{align-items:flex-start;font-size:16.5px;line-height:1.45}
   .pl-todo{display:table;margin:5px 0 0}
 }
+/* 로고 줄바꿈 방지 (메뉴가 많은 노트북 폭) */
+.brand{flex:0 0 auto;white-space:nowrap}
+.brand .num{white-space:nowrap}
+@media(max-width:1240px){ .brand .bsub{display:none} .nav-menu a{padding:8px 9px;font-size:14px} }
+@media(max-width:900px){ .brand .bsub{display:block} }
+@media(max-width:380px){ .brand .bsub{display:none} }
