@@ -18,14 +18,14 @@
   <div class="wrap">
     <span class="section-tag">예산 감시 · 2026 본예산</span>
     <h2 class="section-title">광주 북구, 우리 동네 예산은 어디에 쓰일까?</h2>
-    <p class="section-desc">2026년도 광주 북구 본예산은 <b>1조 651억 원</b>으로 확정됐습니다. 광주 5개 자치구 중 유일하게 <b>7년 연속 1조 원</b> 시대를 이어갑니다.</p>
+    <p class="section-desc">2026년도 광주 북구 본예산은 <b>1조 651억 원</b>으로 확정됐습니다. 광주 5개 자치구 중 유일하게 <b>7년 연속 1조 원</b> 시대를 이어갑니다. 이후 9월 4일 북구의회가 제2회 추가경정예산을 의결해 올해 예산 규모는 <b>1조 3,200억 원</b>이 됐습니다<small>(MTN 2026.9.7 보도)</small>. 아래 표는 본예산 기준입니다.</p>
     <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px">
       <span class="section-tag" style="background:#eaf7ee;color:#1f9d55">출처 · 지방재정365 / 광주 북구 (2026 본예산 확정)</span>
       <span id="liveBadge" class="section-tag" style="display:none;background:#fff2e8;color:#e8590c">● 실시간 연동</span>
     </div>
 
     <div class="kpi mt-l">
-      <div class="kpi-card"><div class="lab">2026년 총예산</div><div class="val" id="k-total">—</div><div class="sub">7년 연속 1조 원 유지</div></div>
+      <div class="kpi-card"><div class="lab">2026년 본예산</div><div class="val" id="k-total">—</div><div class="sub">7년 연속 1조 원 유지</div></div>
       <div class="kpi-card"><div class="lab">일반회계</div><div class="val" id="k-gen">—</div><div class="sub" id="k-gen-sub">—</div></div>
       <div class="kpi-card"><div class="lab">특별회계</div><div class="val" id="k-spc">—</div><div class="sub">목적별 사업 운용</div></div>
       <div class="kpi-card"><div class="lab">전년 대비</div><div class="val" id="k-inc">—</div><div class="sub">2025년 1조 416억 → 2026년</div></div>
@@ -77,7 +77,7 @@
       <div class="kpi-card"><div class="lab">세대 수</div><div class="val" id="d-house">—</div><div class="sub" id="d-perhouse">—</div></div>
       <div class="kpi-card"><div class="lab">행정동 / 법정동</div><div class="val" id="d-dong">—</div><div class="sub">생활권 27개 행정동</div></div>
       <div class="kpi-card" style="background:linear-gradient(160deg,#fff,#fff6e0);border-color:#ffe2a8">
-        <div class="lab">주민 1인당 예산</div><div class="val" id="d-percap">—</div><div class="sub">2026 총예산 ÷ 인구</div></div>
+        <div class="lab">주민 1인당 예산</div><div class="val" id="d-percap">—</div><div class="sub">2026 본예산 ÷ 2024 공시 인구</div></div>
     </div>
 
     <div class="card mt-m" style="border-left:5px solid var(--dp-blue)">
@@ -128,13 +128,13 @@
   }
 
   function renderDemo(){
-    $("d-pop").textContent   = "약 " + Math.round(DEMO.population/10000) + "만 명";
+    $("d-pop").textContent   = DEMO.population.toLocaleString() + "명";
     $("d-asof").textContent  = DEMO.asOf;
-    $("d-house").textContent = "약 " + Math.round(DEMO.households/10000) + "만 세대";
-    $("d-perhouse").textContent = "세대당 약 " + (DEMO.population/DEMO.households).toFixed(2) + "명";
+    $("d-house").textContent = DEMO.households.toLocaleString() + "세대";
+    $("d-perhouse").textContent = DEMO.householdsAsOf;
     $("d-dong").textContent  = DEMO.admDong + " / " + DEMO.legalDong;
     const perCap = Math.round(BUDGET.total*1e8/DEMO.population/10000); // 만원
-    $("d-percap").textContent = "약 " + perCap.toLocaleString() + "만 원";
+    $("d-percap").textContent = perCap.toLocaleString() + "만 원";
     $("d-district").innerHTML = DEMO.districtDongs.map(d=>`<span class="chip active">${d}</span>`).join("");
     $("d-sources").innerHTML = DEMO.sources.map(([t,u])=>`<a href="${u}" target="_blank" rel="noopener">🔗 ${t}</a>`).join("");
   }
